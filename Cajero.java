@@ -1,10 +1,12 @@
+import java.util.Locale;
 import java.util.Scanner; // Importo Scanner, que servirá para que el usuario meta datos por teclado
 
 public class Cajero { // Clase en la que se hará el programa
 
     private float saldo; // Atributo para el saldo del objeto
     private final float tope; // Atributo para el tope del objeto
-    private final Scanner teclado = new Scanner(System.in); // Objeto Scanner para entrada de datos
+
+    private final Scanner teclado = new Scanner(System.in).useLocale(Locale.US); // Objeto Scanner para entrada de datos
 
     // Constructor privado para inicializar saldo y tope del cajero
     private Cajero(float saldo, float tope) {
@@ -15,7 +17,7 @@ public class Cajero { // Clase en la que se hará el programa
     // Método principal main
     public static void main(String[] args) {
         if (args.length < 2) { // Verifica si se proporcionan dos argumentos al ejecutar el programa
-            System.out.println("Meta usted los valores de su cuenta y el tope que le quiera agregar");
+            System.out.println("\n\033[1mMeta usted los valores de su cuenta y el tope que le quiera agregar.\033[0m");
             System.exit(-1); // Termina el programa si no se proporcionan los argumentos necesarios
         }
 
@@ -80,7 +82,7 @@ public class Cajero { // Clase en la que se hará el programa
     // Método para realizar un ingreso de dinero
     private void funcionIngreso() {
         System.out.print("Teclee dinero a ingresar: ");
-        int opcion = teclado.nextInt(); // Lee la cantidad de dinero a ingresar
+        float opcion = teclado.nextFloat(); // Lee la cantidad de dinero a ingresar
         teclado.nextLine(); // Limpia el buffer del Scanner
         System.out.println("\nUsted ingresó " + opcion + "€");
         saldo += opcion; // Incrementa el saldo con la cantidad ingresada
@@ -89,12 +91,11 @@ public class Cajero { // Clase en la que se hará el programa
     // Método para realizar una retirada de dinero
     private void funcionRetirada() {
         System.out.print("Teclee dinero a retirar: ");
-        int opcion = teclado.nextInt(); // Lee la cantidad de dinero a retirar
+        float opcion = teclado.nextInt(); // Lee la cantidad de dinero a retirar
         teclado.nextLine(); // Limpia el buffer del Scanner
         if (opcion > tope) {
             System.out.println("\nIntenta retirar " + opcion + "€");
             verif_tope(); // Muestra el tope actual si se excede
-            verif_saldo(); // Muestra el saldo actual
         } else if (opcion <= tope) {
             System.out.println("\nUsted retiró " + opcion + "€");
             saldo -= opcion; // Reduce el saldo con la cantidad retirada
