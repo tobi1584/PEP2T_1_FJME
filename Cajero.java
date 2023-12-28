@@ -3,8 +3,8 @@ import java.util.Scanner; // Importo Scanner, que servirá para que el usuario m
 public class Cajero { // Clase en la que se hará el programa
 
     private float saldo; // Atributo para el saldo del objeto
-    private float tope; // Atributo para el tope del objeto
-    private Scanner teclado = new Scanner(System.in); // Objeto Scanner para entrada de datos
+    private final float tope; // Atributo para el tope del objeto
+    private final Scanner teclado = new Scanner(System.in); // Objeto Scanner para entrada de datos
 
     // Constructor privado para inicializar saldo y tope del cajero
     private Cajero(float saldo, float tope) {
