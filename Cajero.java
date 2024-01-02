@@ -93,13 +93,14 @@ public class Cajero { // Clase en la que se hará el programa
         System.out.print("Teclee dinero a retirar: ");
         float opcion = teclado.nextInt(); // Lee la cantidad de dinero a retirar
         teclado.nextLine(); // Limpia el buffer del Scanner
-        if (opcion > tope) {
-            System.out.println("\nIntenta retirar " + opcion + "€");
-            verif_tope(); // Muestra el tope actual si se excede
+        if (opcion > saldo) {
+            System.out.println("\n¡Vaya estas intentando retirar más dinero del que tienes!");
         } else if (opcion <= tope) {
             System.out.println("\nUsted retiró " + opcion + "€");
             saldo -= opcion; // Reduce el saldo con la cantidad retirada
+        }else if (tope < opcion) {
+            System.out.println("\nIntenta retirar " + opcion + "€");
+            verif_tope(); // Muestra el tope actual si se excede
         }
     }
 }
-
