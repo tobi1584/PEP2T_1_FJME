@@ -16,7 +16,7 @@ public class Cajero { // Clase en la que se hará el programa
 
     // Método principal main
     public static void main(String[] args) {
-        if (args.length < 2) { // Verifica si se proporcionan dos argumentos al ejecutar el programa
+        if (args.length != 2) { // Verifica si se proporcionan dos argumentos al ejecutar el programa
             System.out.println("\n\033[1mMeta usted los valores de su cuenta y el tope que le quiera agregar.\033[0m");
             System.exit(-1); // Termina el programa si no se proporcionan los argumentos necesarios
         }
