@@ -4,7 +4,7 @@ import java.util.Scanner; // Importo Scanner, que servirá para que el usuario m
 public class Cajero { // Clase en la que se hará el programa
 
     private float saldo; // Atributo para el saldo del objeto
-    private final float tope; // Atributo para el tope del objeto
+    private float tope; // Atributo para el tope del objeto
 
     private final Scanner teclado = new Scanner(System.in).useLocale(Locale.US); // Objeto Scanner para entrada de datos
 
@@ -98,6 +98,7 @@ public class Cajero { // Clase en la que se hará el programa
         } else if (opcion <= tope) {
             System.out.println("\nUsted retiró " + opcion + "€");
             saldo -= opcion; // Reduce el saldo con la cantidad retirada
+            tope -= opcion;
         }else if (tope < opcion) {
             System.out.println("\nIntenta retirar " + opcion + "€");
             verif_tope(); // Muestra el tope actual si se excede
