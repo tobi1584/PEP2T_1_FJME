@@ -91,7 +91,7 @@ public class Cajero { // Clase en la que se hará el programa
     // Método para realizar una retirada de dinero
     private void funcionRetirada() {
         System.out.print("Teclee dinero a retirar: ");
-        float opcion = teclado.nextInt(); // Lee la cantidad de dinero a retirar
+        float opcion = teclado.nextFloat(); // Lee la cantidad de dinero a retirar
         teclado.nextLine(); // Limpia el buffer del Scanner
         if (opcion > saldo) {
             System.out.println("\n¡Vaya estas intentando retirar más dinero del que tienes!");
