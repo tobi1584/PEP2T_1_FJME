@@ -1,5 +1,5 @@
 import java.util.Locale;
-import java.util.Scanner; // Importo Scanner, que servirá para que el usuario meta datos por teclado
+import java.util.Scanner;
 
 public class Cajero { // Clase en la que se hará el programa
 
@@ -84,8 +84,12 @@ public class Cajero { // Clase en la que se hará el programa
         System.out.print("Teclee dinero a ingresar: ");
         float opcion = teclado.nextFloat(); // Lee la cantidad de dinero a ingresar
         teclado.nextLine(); // Limpia el buffer del Scanner
-        System.out.println("\nUsted ingresó " + opcion + "€");
-        saldo += opcion; // Incrementa el saldo con la cantidad ingresada
+        if (opcion <= 0) {
+            System.out.println("¡Vaya, no puedes retirar menos de 1€!");
+        } else {
+            System.out.println("\nUsted ingresó " + opcion + "€");
+            saldo += opcion; // Incrementa el saldo con la cantidad ingresada
+        }
     }
 
     // Método para realizar una retirada de dinero
@@ -93,15 +97,20 @@ public class Cajero { // Clase en la que se hará el programa
         System.out.print("Teclee dinero a retirar: ");
         float opcion = teclado.nextFloat(); // Lee la cantidad de dinero a retirar
         teclado.nextLine(); // Limpia el buffer del Scanner
-        if (opcion > saldo) {
-            System.out.println("\n¡Vaya estas intentando retirar más dinero del que tienes!");
-        } else if (opcion <= tope) {
-            System.out.println("\nUsted retiró " + opcion + "€");
-            saldo -= opcion; // Reduce el saldo con la cantidad retirada
-            tope -= opcion;
-        }else if (tope < opcion) {
-            System.out.println("\nIntenta retirar " + opcion + "€");
-            verif_tope(); // Muestra el tope actual si se excede
+        if (opcion <= 0) {
+            System.out.println("¡Vaya, no puedes retirar menos de 1€!");
+        } else {
+            if (opcion > saldo) {
+                System.out.println("\n¡Vaya estas intentando retirar más dinero del que tienes!");
+            } else if (opcion <= tope) {
+                System.out.println("\nUsted retiró " + opcion + "€");
+                saldo -= opcion; // Reduce el saldo con la cantidad retirada
+                tope -= opcion;
+            } else if (tope < opcion) {
+                System.out.println("\nIntenta retirar " + opcion + "€");
+                verif_tope(); // Muestra el tope actual si se excede
+            }
         }
     }
+
 }
